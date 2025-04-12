@@ -1,0 +1,129 @@
+/* CSS Variables for consistency */
+:root {
+    --primary-color: #3498db;
+    --primary-hover: #2980b9;
+    --secondary-color: #2c3e50;
+    --bg-gradient-start: #74ebd5;
+    --bg-gradient-end: #acb6e5;
+    --text-color: #333;
+    --container-bg: #fff;
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --box-shadow-medium: 0 8px 30px rgba(0,0,0,0.15);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+/* Global styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(to right, var(--bg-gradient-start), var(--bg-gradient-end));
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Container for main content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    background: var(--container-bg);
+    padding: 40px 50px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-medium);
+}
+
+/* Headings */
+h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+/* Paragraphs */
+p {
+    font-size: 16px;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Search bar styling */
+.search-bar {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.search-bar input[type="text"] {
+    padding: 14px 18px;
+    width: 280px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-speed) ease;
+}
+.search-bar input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+.search-bar button {
+    padding: 14px 24px;
+    font-size: 16px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.search-bar button:hover {
+    background-color: var(--primary-hover);
+    box-shadow: var(--box-shadow-light);
+}
+
+/* Cocktail display grid */
+#cocktail-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Cocktail card styling */
+.cocktail {
+    background: var(--container-bg);
+    border: 1px solid #eaeaea;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow-light);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.cocktail:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-medium);
+}
+.cocktail img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+    .search-bar input[type="text"],
+    .search-bar button {
+        width: 100%;
+    }
+}
