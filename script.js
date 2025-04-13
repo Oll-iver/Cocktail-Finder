@@ -4,11 +4,15 @@ const apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 
 function searchCocktails() {
     const ingredientInput = document.getElementById('ingredient').value;
-
+    const loader = document.getElementById('loader');
     if (!ingredientInput) {
         alert('Please enter at least one ingredient.');
         return;
     }
+
+    // Show loader
+    loader.style.display = 'block';
+
 
     const ingredients = ingredientInput.split(',')
         .map(ing => ing.trim().toLowerCase());
@@ -30,6 +34,7 @@ function searchCocktails() {
 
     Promise.all(fetchPromises)
         .then(results => {
+            loader.style.display = 'none';
             if (results.every(result => !result.drinks)) {
                 alert('No cocktails found with the specified ingredients.');
                 return;
@@ -60,6 +65,7 @@ function searchCocktails() {
             }
         })
         .catch(error => {
+            loader.style.display = 'none';
             console.error('Error fetching data:', error);
             alert('An error occurred due to API rate limiting. Please try again in 10 seconds.');
         });
